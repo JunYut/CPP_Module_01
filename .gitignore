@@ -1,0 +1,6 @@
+.vscode
+*.DSYm
+*.a
+*.o
+*.out
+ex00/zombie
