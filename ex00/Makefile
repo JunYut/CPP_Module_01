@@ -4,7 +4,7 @@ FSAN = -fsanitize=address
 
 INCL_DIR = -I.
 
-SRC = $(wildcard *.c)
+SRC = $(wildcard *.cpp)
 INCL = $(wildcard *.hpp) $(wildcard *.h)
 EXE = zombie
 
@@ -14,7 +14,7 @@ $(EXE) : $(INCL) $(SRC)
 	$(CC) $(CFLAGS) $(INCL_DIR) $(SRC) -o $@
 
 fsan :
-	$(CC) $(CFLAGS) $(INCL_DIR) $(FSAN) $(SRC) -o $@
+	$(CC) $(CFLAGS) $(INCL_DIR) $(FSAN) $(SRC) -o $(EXE)
 
 clean :
 	rm -rf $(EXE)
