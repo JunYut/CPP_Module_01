@@ -3,4 +3,6 @@
 *.a
 *.o
 *.out
+*.txt
 ex00/zombie
+ex00/zombieHorde
