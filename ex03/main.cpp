@@ -6,22 +6,33 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:50:44 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/11/08 10:52:00 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/11/08 14:56:30 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <iostream>
-# include "Weapon.h"
-# include "HumanA.h"
-# include "HumanB.h"
+# include "Weapon.hpp"
+# include "HumanA.hpp"
+# include "HumanB.hpp"
 
 int	main(void)
 {
 	{
-		std::cout << "HumanA" << std::endl;
+		Weapon	club = Weapon("crude spiked club");
+		HumanA	bob("Bob", club);
+
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
 	}
 	{
-
+		Weapon	club = Weapon("crude spiked club");
+		HumanB	jim("Jim");
+		
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
 	}
 
 	return (0);

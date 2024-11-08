@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
 FSAN = -fsanitize=address
 
 OBJ_DIR = obj
