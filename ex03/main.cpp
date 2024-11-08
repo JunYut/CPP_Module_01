@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+# include <iostream>
 # include "Weapon.h"
 # include "HumanA.h"
 # include "HumanB.h"
@@ -17,7 +18,7 @@
 int	main(void)
 {
 	{
-
+		std::cout << "HumanA" << std::endl;
 	}
 	{
 
