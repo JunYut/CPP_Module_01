@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:50:54 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/29 15:14:32 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/11/08 10:16:28 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ class Zombie
 
 	public:
 		Zombie(const std::string &name);
+		Zombie();
 		~Zombie();
 		void	announce(void);
+		void	set_name(const std::string name);
 };
 
 # endif
