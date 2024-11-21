@@ -12,7 +12,7 @@ EXE = Harl
 
 all: $(EXE)
 
-$(EXE): $(OBJ)
+$(EXE): $(OBJ) $(INC)
 	$(CC) $(CFLAGS) $(INC_DIR) $^ -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC)
@@ -21,6 +21,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC)
 
 valgrind: $(EXE)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(EXE)
+
+fsan: $(EXE)
+	$(CC) $(CFLAGS) -fsanitize=address $(INC_DIR) $(SRC) -o $^
 
 clean:
 	rm -rf $(OBJ_DIR)
