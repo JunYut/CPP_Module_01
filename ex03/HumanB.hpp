@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:52:53 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/11/08 15:15:22 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/11/21 10:23:11 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ class HumanB
 		std::string	_name;
 
 	public:
-		HumanB() {};
-		HumanB(const std::string name) : _name(name) {};
-		~HumanB() {};
+		HumanB(const std::string name);
+		~HumanB();
 		void	attack();
 		void	setWeapon(Weapon &weapon);
 };

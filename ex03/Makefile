@@ -12,7 +12,7 @@ EXE = unnecessary_violence
 
 all: $(EXE)
 
-$(EXE): $(OBJ)
+$(EXE): $(OBJ) $(INC)
 	$(CC) $(CFLAGS) $(INC_DIR) $^ -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC)

@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:35:40 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/11/08 14:59:00 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/11/21 10:18:41 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 HumanA::HumanA(const std::string name, Weapon &weapon) : _weapon(weapon)
 {
-	this->_name = name;
+	_name = name;
 }
+
+HumanA::~HumanA() {}
 
 void	HumanA::attack()
 {
-	std::cout << this->_name + " attacks with his " + this->_weapon.getType() << std::endl;
+	std::cout << _name + " attacks with his " + _weapon.getType() << std::endl;
 }

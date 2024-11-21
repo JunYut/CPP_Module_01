@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:52:57 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/11/08 14:57:37 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/11/21 10:15:09 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class HumanA
 
 	public:
 		HumanA(const std::string name, Weapon &weapon);
-		~HumanA() {};
+		~HumanA();
 		void	attack();
 };
 
