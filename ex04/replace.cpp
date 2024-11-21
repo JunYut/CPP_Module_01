@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 10:54:20 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/11/09 13:11:50 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/11/21 10:54:48 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	replace_str(string &content, const string &s1, const string &s2)
 {
 	size_t	pos;
 	
+	if (s1.empty())
+		return ;
 	pos = 0;
 	while ((pos = content.find(s1, pos)) != string::npos)
 	{
