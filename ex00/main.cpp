@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:50:33 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/29 15:19:56 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/11/21 09:21:26 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 int	main(void)
 {
-	Zombie	*zombie1 = newZombie("tryHard_1");
-	zombie1->announce();
-	delete zombie1;
+	Zombie	*heap;
 
-	randomChump("tryHard_2");
+	heap = newZombie("Heap");
+	heap->announce();
+	randomChump("Stack");
+
+	delete heap;
+
+	return 0;
 }
