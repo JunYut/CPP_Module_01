@@ -1,36 +1,33 @@
 CC = g++
 CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
-FSAN = -fsanitize=address
 
+SRC_DIR = .
 OBJ_DIR = obj
-INCL_DIR = -I.
+INC_DIR = -I.
 
-SRC = $(wildcard *.cpp)
+SRC = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-INCL = $(wildcard *.hpp) $(wildcard *.h)
+INC = $(wildcard $(INC_DIR)/*.hpp) $(wildcard $(INC_DIR)/*.h)
 EXE = replace
 
-all : $(EXE)
+all: $(EXE)
 
-$(EXE) : $(OBJ)
-	$(CC) $(CFLAGS) $(INCL_DIR) $(OBJ) -o $@
+$(EXE): $(OBJ)
+	$(CC) $(CFLAGS) $(INC_DIR) $^ -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC)
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(INC_DIR) -c $< -o $@
 
-fsan :
-	$(CC) $(CFLAGS) $(INCL_DIR) $(FSAN) $(SRC) -o $(EXE)
+valgrind: $(EXE)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(EXE)
 
-valgrind :
-	valgrind --leak-check=full --track-origins=yes --log-file=valgrind-out.txt ./$(EXE)
+clean:
+	rm -rf $(OBJ_DIR)
 
-leaks :
-	leaks -atExit -- ./$(EXE)
+fclean: clean
+	rm -f $(EXE)
 
-clean :
-	rm -rf $(EXE)
+re: fclean all
 
-re : clean all
-
-.PHONY : all clean
+.PHONY: all valgrind clean fclean re

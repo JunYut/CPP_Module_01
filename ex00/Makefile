@@ -1,24 +1,33 @@
 CC = g++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-FSAN = -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
 
-INCL_DIR = -I.
+SRC_DIR = .
+OBJ_DIR = obj
+INC_DIR = -I.
 
-SRC = $(wildcard *.cpp)
-INCL = $(wildcard *.hpp) $(wildcard *.h)
+SRC = $(wildcard $(SRC_DIR)/*.cpp)
+OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+INC = $(wildcard $(INC_DIR)/*.hpp) $(wildcard $(INC_DIR)/*.h)
 EXE = zombie
 
-all : $(EXE)
+all: $(EXE)
 
-$(EXE) : $(INCL) $(SRC)
-	$(CC) $(CFLAGS) $(INCL_DIR) $(SRC) -o $@
+$(EXE): $(OBJ)
+	$(CC) $(CFLAGS) $(INC_DIR) $^ -o $@
 
-fsan :
-	$(CC) $(CFLAGS) $(INCL_DIR) $(FSAN) $(SRC) -o $(EXE)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC)
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(INC_DIR) -c $< -o $@
 
-clean :
-	rm -rf $(EXE)
+valgrind: $(EXE)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(EXE)
 
-re : clean all
+clean:
+	rm -rf $(OBJ_DIR)
 
-.PHONY : all clean
+fclean: clean
+	rm -f $(EXE)
+
+re: fclean all
+
+.PHONY: all valgrind clean fclean re
